@@ -1,7 +1,9 @@
 from aocd import *
+from time import perf_counter
 
 data_input = get_data(day=1, year=2025)
 # data_input = "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82"
+t1_start = perf_counter()
 dial = 50
 
 
@@ -21,7 +23,7 @@ def dial_left(to_left):
 
 ex1_res = 0
 for line in data_input.split('\n'):
-    print(line)
+    # print(line)
     if line[0] == 'L':
         dial = dial_left(line[1:])
     elif line[0] == 'R':
@@ -29,17 +31,20 @@ for line in data_input.split('\n'):
 
     if dial == 0:
         ex1_res += 1
-    print('Dial now at ' + str(dial))
-    print('Count now at ' + str(ex1_res))
+    # print('Dial now at ' + str(dial))
+    # print('Count now at ' + str(ex1_res))
 
-print(ex1_res)
+t1_stop = perf_counter()
+print('Part A - Answer: ' + str(ex1_res) + ', calculated in ' + str((t1_stop - t1_start) * 1000) + ' ms')
+# print(ex1_res)
 # submit(ex1_res, part='a', day=1, year=2025)
 
-print('-- start part 2')
+# print('-- start part 2')
+t2_start = perf_counter()
 ex2_res = 0
 dial = 50
 for line in data_input.split('\n'):
-    print(line)
+    # print(line)
     direction = line[0]
     amount_of_steps = int(line[1:])
     for i in range(amount_of_steps):
@@ -54,5 +59,6 @@ for line in data_input.split('\n'):
         if dial == 0:
             ex2_res += 1
 
-print(ex2_res)
-submit(ex2_res, part='b', day=1, year=2025)
+t2_stop = perf_counter()
+print('Part B - Answer: ' + str(ex2_res) + ', calculated in ' + str((t2_stop - t2_start) * 1000) + ' ms')
+# submit(ex2_res, part='b', day=1, year=2025)
