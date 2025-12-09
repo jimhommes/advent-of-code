@@ -33,4 +33,26 @@ for line in data_input.split('\n'):
     print('Count now at ' + str(ex1_res))
 
 print(ex1_res)
-submit(ex1_res, part='a', day=1, year=2025)
+# submit(ex1_res, part='a', day=1, year=2025)
+
+print('-- start part 2')
+ex2_res = 0
+dial = 50
+for line in data_input.split('\n'):
+    print(line)
+    direction = line[0]
+    amount_of_steps = int(line[1:])
+    for i in range(amount_of_steps):
+        if direction == 'R':
+            dial += 1
+            if dial > 99:
+                dial = 0
+        elif direction == 'L':
+            dial -= 1
+            if dial < 0:
+                dial = 99
+        if dial == 0:
+            ex2_res += 1
+
+print(ex2_res)
+submit(ex2_res, part='b', day=1, year=2025)
