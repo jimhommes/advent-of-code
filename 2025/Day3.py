@@ -27,10 +27,12 @@ for line in data_input.split('\n'):
     ex1_res += get_maximum_joltage(line, 2)
 t1_stop = perf_counter()
 print('Part A - Answer: ' + str(ex1_res) + ', calculated in ' + str((t1_stop - t1_start) * 1000) + ' ms')
-submit(ex1_res, part='a', day=3, year=2025)
+# submit(ex1_res, part='a', day=3, year=2025)
 
-# t2_start = perf_counter()
-# ex2_res = 0
-# t2_stop = perf_counter()
-# print('Part B - Answer: ' + str(ex2_res) + ', calculated in ' + str((t2_stop - t2_start) * 1000) + ' ms')
-# submit(ex2_res, part='b', day=3, year=2025)
+t2_start = perf_counter()
+ex2_res = 0
+for line in data_input.split('\n'):
+    ex2_res += get_maximum_joltage(line, 12)
+t2_stop = perf_counter()
+print('Part B - Answer: ' + str(ex2_res) + ', calculated in ' + str((t2_stop - t2_start) * 1000) + ' ms')
+submit(ex2_res, part='b', day=3, year=2025)
